@@ -7,81 +7,83 @@
         mc:Ignorable="d"
         Icon="128.ico"
         Title="Equipos NBA" Height="450" Width="800">
+
+    <Window.Resources>
+        <!-- Estilo con propiedad compleja Border (Degradado Lakers) -->
+        <Style TargetType="{x:Type Border}" x:Key="degradadoLakers">
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="CornerRadius" Value="3"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="MediumPurple" Offset="0"/>
+                        <GradientStop Color="Yellow" Offset="1.5"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo con propiedad compleja Border (Degradado Heat) -->
+        <Style TargetType="{x:Type Border}" x:Key="degradadoHeat" BasedOn="{StaticResource degradadoLakers}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="Red" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo para TextBlock con letras en negro -->
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <!-- Estilo para TextBlock con letras en blanco -->
+        <Style TargetType="{x:Type TextBlock}" x:Key="letrasBlancas" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <!-- Estilo para WrapPanel -->
+        <Style TargetType="{x:Type WrapPanel}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        
+        <!-- Estilo para Image -->
+        <Style TargetType="{x:Type Image}">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+    </Window.Resources>
+    
     <StackPanel HorizontalAlignment="Center">
-        <Border Margin="0,0,0,10" BorderBrush="Black" BorderThickness="3" CornerRadius="3">
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="MediumPurple" Offset="0"/>
-                    <GradientStop Color="Yellow" Offset="1.5"/>
-                </LinearGradientBrush>
-            </Border.Background>
+        <Border Style="{StaticResource degradadoLakers}">
             <StackPanel>
-                <WrapPanel HorizontalAlignment="Center">
-                    <TextBlock
-                        Text="Los Ángeles Lakers" 
-                        FontWeight="Bold" 
-                        FontSize="30" />
-                </WrapPanel>
-                <WrapPanel HorizontalAlignment="Center" >
-                    <Image
-                        Source="9_lakers.png"
-                        Height="100" Width="100"
-                        VerticalAlignment="Bottom"/>
-                    <Image
-                        Source="14_lakers.png"
-                        Height="100" Width="100"
-                        VerticalAlignment="Bottom"/>
-                    <Image
-                        Source="23_lakers.png"
-                        Height="100" Width="100"
-                        VerticalAlignment="Bottom"/>
-                    <Image
-                        Source="3_lakers.png"
-                        Height="100" Width="100"
-                        VerticalAlignment="Bottom"/>
-                    <Image
-                        Source="39_lakers.png"
-                        Height="100" Width="100"
-                        VerticalAlignment="Bottom"/>
+                <TextBlock>Los Ángeles Lakers</TextBlock>
+                <WrapPanel>
+                    <Image Source="9_lakers.png"/>
+                    <Image Source="14_lakers.png"/>
+                    <Image Source="23_lakers.png"/>
+                    <Image Source="3_lakers.png"/>
+                    <Image Source="39_lakers.png"/>
                 </WrapPanel>
             </StackPanel>
         </Border>
-        <Border Margin="0,5" BorderBrush="Black" BorderThickness="3" CornerRadius="3">
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="Red" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
+        <Border Style="{StaticResource degradadoHeat}">
             <StackPanel>
-                <WrapPanel HorizontalAlignment="Center">
-                    <TextBlock
-                        Text="Miami Heat" 
-                        FontWeight="Bold" 
-                        FontSize="30"
-                        Foreground="White"/>
-                </WrapPanel>
-                <WrapPanel HorizontalAlignment="Center" >
-                    <Image
-                        Source="7_heat.png"
-                        Height="100" Width="100"
-                        VerticalAlignment="Bottom"/>
-                    <Image
-                        Source="14_heat.png"
-                        Height="100" Width="100"
-                        VerticalAlignment="Bottom"/>
-                    <Image
-                        Source="22_heat.png"
-                        Height="100" Width="100"
-                        VerticalAlignment="Bottom"/>
-                    <Image
-                        Source="99_heat.png"
-                        Height="100" Width="100"
-                        VerticalAlignment="Bottom"/>
-                    <Image
-                        Source="13_heat.png"
-                        Height="100" Width="100"
-                        VerticalAlignment="Bottom"/>
+                <TextBlock Style="{StaticResource letrasBlancas}">Miami Heat</TextBlock>
+                <WrapPanel>
+                    <Image Source="7_heat.png"/>
+                    <Image Source="14_heat.png"/>
+                    <Image Source="22_heat.png"/>
+                    <Image Source="99_heat.png"/>
+                    <Image Source="13_heat.png"/>
                 </WrapPanel>
             </StackPanel>
         </Border>
